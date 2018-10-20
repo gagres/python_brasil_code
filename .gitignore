@@ -1,0 +1,4 @@
+env/
+.vscode
+**/*.zip
+build/site-packages
