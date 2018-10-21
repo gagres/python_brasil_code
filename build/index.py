@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 import os, sys
 # Allow import modules by /site-packages
 sys.path.append(os.getcwd() + '/site-packages')
@@ -9,8 +8,8 @@ from watson_developer_cloud import ConversationV1
 
 def searchOnWatson(message):
   conversation = ConversationV1(
-    username="53fe22a5-1110-4e73-ae06-ddf8b3209b64",
-    password="H0kQ2okyrezF",
+    username=os.environ.get('WATSON_USERNAME', None),
+    password=os.environ.get('WATSON_USERNAME', None),
     version="2018-07-10"
   )
   workspace_id = "7473ff72-cda0-489f-84b7-ec06509f3fc5"
@@ -38,9 +37,3 @@ def handler(event, context):
     "statusCode": 200,
     "body": json.dumps({ "watson_response_text": watsonResponseText, 'qna_maker_text': qnamakerResponseText })
   }
-
-payload = {
-  'message': 'Qual é a localizacao do lugar?'
-}
-
-print(json.dumps(handler(payload, None), indent=2))

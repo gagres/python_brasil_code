@@ -1,9 +1,9 @@
-import json
+import os, json
 from watson_developer_cloud import ConversationV1
 
 conversation = ConversationV1(
-  username="53fe22a5-1110-4e73-ae06-ddf8b3209b64",
-  password="H0kQ2okyrezF",
+  username=os.environ.get('WATSON_USERNAME', None),
+  password=os.environ.get('WATSON_PASSWORD', None),
   version="2018-07-10"
 )
 
